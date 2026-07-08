@@ -1,23 +1,17 @@
 import 'dotenv/config';
-import cors from 'cors';
-import express from 'express';
+import { createApp } from './app.js';
+import { loadConfig } from './config.js';
+import { InquiryStore } from './db.js';
 
-const app = express();
-const port = Number(process.env.PORT ?? 3002);
+const config = loadConfig();
+const store = new InquiryStore(config.databasePath);
+store.ensureAdminUser(config.adminUsername, config.adminPassword);
 
-app.use(cors());
-app.use(express.json());
+const app = createApp({ config, store });
 
-app.get('/health', (_req, res) => {
-  res.json({
-    ok: true,
-    service: 'photography-landing-page-api',
-    telegramConfigured: Boolean(
-      process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID,
-    ),
-  });
-});
-
-app.listen(port, () => {
-  console.log(`API listening on http://localhost:${port}`);
+app.listen(config.port, () => {
+  console.log(`API listening on http://localhost:${config.port}`);
+  console.log(
+    `Database: ${config.databasePath} | Admin user: ${config.adminUsername}`,
+  );
 });
