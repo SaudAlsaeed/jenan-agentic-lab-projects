@@ -104,6 +104,7 @@ describe('API inquiries + admin', () => {
 
     expect(res.status).toBe(201);
     expect(res.body.success).toBe(true);
+    expect(res.body.telegramSent).toBe(true);
     expect(res.body.inquiry.status).toBe('جديد');
     expect(res.body.inquiry.telegramSent).toBe(true);
     expect(res.body.inquiry.location).toBe('الرياض');
@@ -113,7 +114,7 @@ describe('API inquiries + admin', () => {
     expect(telegramCalls[0].text).toContain('محمد');
   });
 
-  it('keeps DB row and returns 502 when Telegram fails', async () => {
+  it('keeps DB row and still returns 201 when Telegram fails', async () => {
     const config = makeConfig({
       databasePath: path.join(tmpDir, 'test.sqlite'),
     });
@@ -136,12 +137,60 @@ describe('API inquiries + admin', () => {
     });
     errorSpy.mockRestore();
 
-    expect(res.status).toBe(502);
+    expect(res.status).toBe(201);
+    expect(res.body.success).toBe(true);
     expect(res.body.telegramSent).toBe(false);
+    expect(res.body.inquiry.telegramSent).toBe(false);
     const items = store.listInquiries();
     expect(items).toHaveLength(1);
     expect(items[0].telegramSent).toBe(false);
     expect(items[0].status).toBe('جديد');
+  });
+
+  it('persists and returns 201 when Telegram is not configured', async () => {
+    const app = buildApp({
+      telegramBotToken: '',
+      telegramChatId: '',
+    });
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const res = await request(app).post('/api/inquiries').send({
+      name: 'No Telegram',
+      phone: '0508888888',
+      service: 'video',
+    });
+    errorSpy.mockRestore();
+
+    expect(res.status).toBe(201);
+    expect(res.body.telegramSent).toBe(false);
+    expect(telegramCalls).toHaveLength(0);
+    expect(store.listInquiries()).toHaveLength(1);
+  });
+
+  it('persists and returns 201 when Telegram sender throws', async () => {
+    const config = makeConfig({
+      databasePath: path.join(tmpDir, 'test.sqlite'),
+    });
+    const app = createApp({
+      config,
+      store,
+      disableRateLimit: true,
+      telegramSender: async () => {
+        throw new Error('network down');
+      },
+    });
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const res = await request(app).post('/api/inquiries').send({
+      name: 'Throw Case',
+      phone: '0507777777',
+      service: 'other',
+    });
+    errorSpy.mockRestore();
+
+    expect(res.status).toBe(201);
+    expect(res.body.telegramSent).toBe(false);
+    expect(store.listInquiries()[0].telegramSent).toBe(false);
   });
 
   it('requires admin auth for list endpoint', async () => {

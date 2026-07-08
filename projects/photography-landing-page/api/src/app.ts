@@ -85,52 +85,58 @@ export function createApp(options: CreateAppOptions) {
           return;
         }
 
-        if (!isTelegramConfigured(config)) {
-          console.error(
-            '[telegram] TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured',
-          );
-          res.status(503).json({
-            error: 'Inquiry notifications are not configured',
-          });
-          return;
-        }
-
-        // Persist first, then notify. On Telegram failure the row is kept with
-        // telegramSent=false so admin can still follow up (documented approach).
+        // Persist first, then notify (R-07/R-08). Telegram failures must never
+        // fail the HTTP request — log and leave telegramSent=false for admin.
         const inquiry = store.createInquiry(parsed.data, {
           telegramSent: false,
         });
 
-        const telegramResult = await sendInquiryTelegram({
-          token: config.telegramBotToken,
-          chatId: config.telegramChatId,
-          input: parsed.data,
-          sender: telegramSender,
-        });
+        let telegramSent = false;
 
-        if (!telegramResult.ok) {
+        if (!isTelegramConfigured(config)) {
           console.error(
-            '[telegram] send failed',
-            JSON.stringify({
-              inquiryId: inquiry.id,
-              status: telegramResult.status,
-              body: telegramResult.body,
-            }),
+            '[telegram] TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured',
+            JSON.stringify({ inquiryId: inquiry.id }),
           );
-          res.status(502).json({
-            error: 'Failed to send Telegram notification',
-            inquiryId: inquiry.id,
-            telegramSent: false,
-          });
-          return;
+        } else {
+          try {
+            const telegramResult = await sendInquiryTelegram({
+              token: config.telegramBotToken,
+              chatId: config.telegramChatId,
+              input: parsed.data,
+              sender: telegramSender,
+            });
+
+            if (!telegramResult.ok) {
+              console.error(
+                '[telegram] send failed',
+                JSON.stringify({
+                  inquiryId: inquiry.id,
+                  status: telegramResult.status,
+                  body: telegramResult.body,
+                }),
+              );
+            } else {
+              store.markTelegramSent(inquiry.id, true);
+              telegramSent = true;
+            }
+          } catch (err) {
+            console.error(
+              '[telegram] send threw',
+              JSON.stringify({
+                inquiryId: inquiry.id,
+                error: err instanceof Error ? err.message : String(err),
+              }),
+            );
+          }
         }
 
-        store.markTelegramSent(inquiry.id, true);
-        const updated = store.getInquiry(inquiry.id)!;
+        const result = store.getInquiry(inquiry.id)!;
 
         res.status(201).json({
           success: true,
-          inquiry: updated,
+          inquiry: result,
+          telegramSent,
         });
       } catch (err) {
         next(err);

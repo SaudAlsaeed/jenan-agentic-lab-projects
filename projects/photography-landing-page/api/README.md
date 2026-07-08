@@ -39,9 +39,9 @@ Default port: `3002`.
 
 On first boot the API creates the admin user from `ADMIN_USERNAME` / `ADMIN_PASSWORD` if missing.
 
-## Telegram failure behavior
+## Telegram failure behavior (R-07 / R-08)
 
-Inquiry is **saved first** with `telegramSent: false`, then Telegram is called. If Telegram fails, the API returns **502**, logs the failure, and leaves the row in DB so admin can still follow up. Successful notify flips `telegramSent` to `true`.
+Inquiry is **saved first** with `telegramSent: false`, then Telegram is called. If Telegram is missing, fails, or throws, the API still returns **201**, logs the failure, and leaves the row with `telegramSent: false` so admin can follow up. Successful notify flips `telegramSent` to `true`. The bot token stays server-side only.
 
 ## Endpoints
 
