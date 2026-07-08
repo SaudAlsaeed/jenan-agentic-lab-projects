@@ -1,0 +1,71 @@
+/**
+ * Design tokens — JEN-8 §5.1 Option A (Premium Dark), primary recommendation.
+ * Swap values to Option B (§5.2) if stakeholder Q6 chooses light.
+ * Palette TBD until brand assets / Q6 lock.
+ */
+
+:root {
+  /* Palette — Option A */
+  --bg-void: #0b0c0e;
+  --bg-elevated: #141619;
+  --text-primary: #f4f1ec;
+  --text-muted: #a8a299;
+  --accent-sand: #c4a574;
+  --accent-sand-hover: #d4b888;
+  --line: rgba(244, 241, 236, 0.12);
+  --danger: #e8a0a0;
+  --success: #9fcbb0;
+
+  /* Admin status chips (dark UI) */
+  --status-new: #c4a574;
+  --status-contacted: #7ba3c4;
+  --status-confirmed: #9fcbb0;
+  --status-done: #8a8a8a;
+  --status-cancelled: #e8a0a0;
+
+  /* Typography — JEN-8 §5.3 */
+  --font-display: 'Cairo', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-ui: 'Readex Pro', system-ui, sans-serif;
+
+  /* Type scale (mobile defaults; bump at lg+) */
+  --text-wordmark: 1.25rem;
+  --text-hero: 2.25rem;
+  --text-section: 1.75rem;
+  --text-body: 1rem;
+  --text-label: 0.8125rem;
+  --leading-hero: 1.2;
+  --leading-body: 1.7;
+
+  /* Layout — JEN-8 §5.4 */
+  --content-max: 72rem;
+  --pad-x: 1.25rem;
+  --section-y: 4.5rem;
+  --touch-min: 44px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-wordmark: 1.35rem;
+    --text-hero: 3.5rem;
+    --text-section: 2.25rem;
+    --text-body: 1.0625rem;
+    --text-label: 0.875rem;
+    --leading-hero: 1.15;
+    --leading-body: 1.75;
+    --pad-x: 2rem;
+    --section-y: 7rem;
+  }
+}
+
+/*
+ * Option B (Clean Light) — uncomment / swap when Q6 chooses light:
+ *
+ * --bg-void: #f7f5f2;
+ * --bg-elevated: #ffffff;
+ * --text-primary: #1a1c1f;
+ * --text-muted: #5c5a56;
+ * --accent-sand: #8b7355;
+ * --accent-sand-hover: #9a8366;
+ * --line: rgba(26, 28, 31, 0.1);
+ */

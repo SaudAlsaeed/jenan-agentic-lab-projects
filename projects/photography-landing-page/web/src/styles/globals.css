@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@theme {
+  --font-display: 'Cairo', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-ui: 'Readex Pro', system-ui, sans-serif;
+
+  --color-bg-void: var(--bg-void);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-sand: var(--accent-sand);
+  --color-accent-sand-hover: var(--accent-sand-hover);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-sand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+}
