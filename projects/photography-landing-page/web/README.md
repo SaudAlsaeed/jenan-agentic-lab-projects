@@ -33,6 +33,18 @@ Dev server: [http://localhost:5174](http://localhost:5174)
 | `pnpm lint` | ESLint |
 | `pnpm format` | Prettier |
 
-## Scope (JEN-10)
+## Admin (JEN-12)
 
-Public landing sections per JEN-8: header, hero, trust, portfolio (tabs + lightbox), services, packages (starting-from pricing), how-it-works, contact form, footer, sticky mobile CTA, WhatsApp FAB. Admin UI is JEN-12.
+Routes (RTL Arabic, JWT against API on `:3002`):
+
+| Route | Purpose |
+| --- | --- |
+| `/admin/login` | Admin login |
+| `/admin` | Inquiry list + filters/search |
+| `/admin/inquiries/:id` | Detail: status, notes, Call / WhatsApp |
+
+Default bootstrap credentials match the API (`admin` / `changeme`) unless overridden via API env.
+
+## Scope
+
+Public landing (JEN-10) + admin dashboard (JEN-12) in the same SPA.
