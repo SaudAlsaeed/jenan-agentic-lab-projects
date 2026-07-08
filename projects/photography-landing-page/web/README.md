@@ -1,10 +1,10 @@
 # Web
 
-React SPA scaffold for **Photography Landing Page** (Arabic RTL).
+React SPA for **Photography Landing Page** — Arabic RTL (default) + English LTR bilingual landing with contact form.
 
 ## Setup
 
-Requirements: Node.js 20+, [pnpm](https://pnpm.io/) 9+ (from repo root)
+Requirements: Node.js 20+, [pnpm](https://pnpm.io/) 9+
 
 ```bash
 pnpm install
@@ -13,7 +13,15 @@ pnpm --filter @photography-landing-page/web dev
 pnpm dev:photography-landing-page:web
 ```
 
-Dev server: [http://localhost:5174](http://localhost:5174) (5174 so it can run alongside jenan-lab-hub on 5173).
+Dev server: [http://localhost:5174](http://localhost:5174)
+
+## Env (optional)
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `VITE_API_BASE` | `http://localhost:3002` | Backend origin for `POST /api/inquiries` |
+| `VITE_WHATSAPP_NUMBER` | `966500000000` | WhatsApp deep-link digits (placeholder) |
+| `VITE_PHONE_DISPLAY` | `+966 50 000 0000` | Footer phone display |
 
 ## Scripts
 
@@ -25,10 +33,6 @@ Dev server: [http://localhost:5174](http://localhost:5174) (5174 so it can run a
 | `pnpm lint` | ESLint |
 | `pnpm format` | Prettier |
 
-## Scaffold contents
+## Scope (JEN-10)
 
-- `index.html` — `lang="ar"` `dir="rtl"`, Cairo / IBM Plex Sans Arabic / Readex Pro
-- `src/styles/tokens.css` — JEN-8 §5.1 Option A design tokens (+ Option B comment)
-- `src/pages/Shell.tsx` — minimal RTL shell with typographic wordmark placeholder
-
-Landing sections, contact form, and admin UI are out of scope for this scaffold (later stage issues).
+Public landing sections per JEN-8: header, hero, trust, portfolio (tabs + lightbox), services, packages (starting-from pricing), how-it-works, contact form, footer, sticky mobile CTA, WhatsApp FAB. Admin UI is JEN-12.
