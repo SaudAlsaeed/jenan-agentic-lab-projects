@@ -1,13 +1,6 @@
-import { ContactPrefillProvider } from '@/context/ContactPrefillContext';
-import { LocaleProvider } from '@/i18n/LocaleContext';
-import { LandingPage } from '@/pages/LandingPage';
+import { RouterProvider } from 'react-router-dom';
+import { router } from '@/routes';
 
 export function App() {
-  return (
-    <LocaleProvider>
-      <ContactPrefillProvider>
-        <LandingPage />
-      </ContactPrefillProvider>
-    </LocaleProvider>
-  );
+  return <RouterProvider router={router} />;
 }
