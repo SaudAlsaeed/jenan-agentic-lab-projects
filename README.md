@@ -8,10 +8,13 @@ Monorepo for all projects in the **Jenan-agentic-lab** Multica workspace.
 
 ```
 projects/
-  jenan-lab-hub/       ← Multica project "Jenan Lab Hub"
-    web/               React SPA dashboard
-    api/               Node.js backend
-  <next-project>/      ← future Multica projects go here
+  jenan-lab-hub/                 ← Multica project "Jenan Lab Hub"
+    web/                         React SPA dashboard
+    api/                         Node.js backend
+  photography-landing-page/      ← Multica project "Photography Landing Page"
+    web/                         React SPA (Arabic RTL)
+    api/                         Node.js backend
+  <next-project>/                ← future Multica projects go here
     web/
     api/
 ```
@@ -22,8 +25,10 @@ Requirements: Node.js 20+, [pnpm](https://pnpm.io/) 9+
 
 ```bash
 pnpm install
-pnpm dev:jenan-lab-hub:web   # http://localhost:5173
-pnpm dev:jenan-lab-hub:api   # http://localhost:3001
+pnpm dev:jenan-lab-hub:web              # http://localhost:5173
+pnpm dev:jenan-lab-hub:api              # http://localhost:3001
+pnpm dev:photography-landing-page:web   # http://localhost:5174
+pnpm dev:photography-landing-page:api   # http://localhost:3002
 pnpm test
 pnpm build
 ```
