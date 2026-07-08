@@ -1,0 +1,62 @@
+{
+  "owner": {
+    "name": "craftersaud",
+    "title": "Project Owner"
+  },
+  "welcome": {
+    "eyebrow": "Web Squad",
+    "headline": "Welcome, craftersaud",
+    "subheadline": "You're the owner of this workspace. Meet the six teammates who plan, design, build, and validate your apps.",
+    "ctaLabel": "Meet the Web Squad"
+  },
+  "agents": [
+    {
+      "id": "team-lead",
+      "displayName": "Team Lead",
+      "roleTitle": "Squad coordination & delivery",
+      "avatarInitials": "TL",
+      "responsibilities": "Keeps Web Squad delivery moving — triaging issues, delegating work, reviewing PRs, and unblocking the team. Coordinates the pipeline from idea to QA sign-off.",
+      "greeting": "I'm Team Lead. I keep Web Squad delivery moving — triaging issues, delegating work, reviewing PRs, and unblocking the team. When you kick off a feature, I make sure scope is clear, design is ready, and the right engineer picks it up. You can count on me to coordinate the pipeline from idea to QA sign-off."
+    },
+    {
+      "id": "business-analyst",
+      "displayName": "Business Analyst",
+      "roleTitle": "Requirements & acceptance criteria",
+      "avatarInitials": "BA",
+      "responsibilities": "Turns fuzzy ideas into clear requirements — user stories, acceptance criteria, and scoped handoffs engineering and QA can execute. Surfaces ambiguity early so the team does not rebuild later.",
+      "greeting": "I'm Business Analyst. I turn fuzzy ideas into clear requirements — user stories, acceptance criteria, and scoped handoffs engineering and QA can execute. If something is ambiguous, I ask the questions early so we don't rebuild later. I help you get from \"we need a welcome screen\" to testable, agreed-upon scope."
+    },
+    {
+      "id": "ux-designer",
+      "displayName": "UX / UI Designer",
+      "roleTitle": "UX flows & visual design",
+      "avatarInitials": "UX",
+      "responsibilities": "Translates requirements into flows, layouts, and visual direction engineers can implement. Defines interaction states and keeps accessibility in mind from the start.",
+      "greeting": "I'm UX / UI Designer. I translate requirements into flows, layouts, and visual direction your engineers can implement. I define states — default, hover, focus, loading, empty, error — and keep accessibility in mind from the start. My job is to make the experience feel intentional before a single production component ships."
+    },
+    {
+      "id": "frontend-engineer",
+      "displayName": "Frontend Engineer",
+      "roleTitle": "React SPA implementation",
+      "avatarInitials": "FE",
+      "responsibilities": "Builds the React SPA — components, routing, client-side behavior, and polished UI that matches the design spec. Coordinates with Backend Engineer when data contracts change.",
+      "greeting": "I'm Frontend Engineer. I build the React SPA — components, routing, client-side behavior, and polished UI that matches the design spec. I work closely with Backend Engineer when data contracts change, and I care about responsive layout, keyboard access, and clean handoff for QA."
+    },
+    {
+      "id": "backend-engineer",
+      "displayName": "Backend Engineer",
+      "roleTitle": "Node.js APIs & server logic",
+      "avatarInitials": "BE",
+      "responsibilities": "Owns the Node.js API — endpoints, server logic, and the data layer that feeds the frontend. Designs stable contracts and documents how to run services locally.",
+      "greeting": "I'm Backend Engineer. I own the Node.js API — endpoints, server logic, and the data layer that feeds your frontend. For this app, that means serving agent metadata and health checks; on larger features, I design stable contracts and document how to run things locally."
+    },
+    {
+      "id": "qa-engineer",
+      "displayName": "QA Engineer",
+      "roleTitle": "Validation & test evidence",
+      "avatarInitials": "QA",
+      "responsibilities": "Validates shipped work against acceptance criteria — golden paths, edge cases, and error states — with clear pass/fail evidence before a feature is called done.",
+      "greeting": "I'm QA Engineer. I validate what we ship against acceptance criteria — golden paths, edge cases, and error states — with clear pass/fail evidence. I don't guess; I reproduce, document, and hand results back to the team. Before we call a feature done, I make sure it actually works the way we agreed."
+    }
+  ]
+}

@@ -5,6 +5,7 @@ Each subdirectory is one Multica project. Folder name should match the project s
 | Folder | Multica project |
 | --- | --- |
 | `jenan-lab-hub/` | Jenan Lab Hub |
+| `welcome-app/` | Welcome app |
 
 To scaffold a new project:
 
