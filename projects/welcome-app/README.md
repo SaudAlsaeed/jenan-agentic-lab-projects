@@ -4,7 +4,7 @@ Multica project folder for **Welcome app** — owner greeting and Web Squad agen
 
 | Asset | Path | Stack |
 | --- | --- | --- |
-| Frontend | `web/` | React 19 + Vite + Tailwind (Frontend Engineer) |
+| Frontend | `web/` | React 19 + Vite + Tailwind |
 | Backend | `api/` | Node.js + Express |
 
 From repo root:
@@ -12,8 +12,10 @@ From repo root:
 ```bash
 pnpm install
 pnpm dev:welcome-app:api   # http://localhost:3002
-pnpm dev:welcome-app:web   # http://localhost:5174 (once web is scaffolded)
+pnpm dev:welcome-app:web   # http://localhost:5174
 ```
+
+Vite (web) proxies `/api` and `/health` to the API on port 3002.
 
 ## API (backend)
 
@@ -24,5 +26,4 @@ See `api/README.md` for details.
 
 ## Web (frontend)
 
-Scaffolded by Frontend Engineer per UX spec (routes `/`, `/agents`, `/agents/:id`).
-See `web/README.md` once present.
+Routes: `/`, `/agents`, `/agents/:id` — see `web/README.md`.
