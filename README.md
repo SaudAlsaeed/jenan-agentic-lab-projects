@@ -1,17 +1,20 @@
 # jenan-agentic-lab-projects
 
-**Jenan Lab Hub** — the project repo for the [Jenan-agentic-lab](https://github.com/SaudAlsaeed/jenan-agentic-lab-projects) Multica workspace.
+Monorepo for all projects in the **Jenan-agentic-lab** Multica workspace.
 
-One Multica **project** maps to **one GitHub repo**. All assets for that project live inside this repo.
+**One repo, one folder per project.** Each Multica project maps to a subdirectory under `projects/`, and that folder holds all related assets (`web/`, `api/`, etc.).
 
 ## Layout
 
-| Path | Purpose |
-| --- | --- |
-| `web/` | React SPA — team command center dashboard |
-| `api/` | Node.js backend — health + placeholder API (Multica BFF in v2) |
-
-Add more asset folders as the project grows (`docs/`, `infra/`, `scripts/`, etc.) — they stay in this same repo.
+```
+projects/
+  jenan-lab-hub/       ← Multica project "Jenan Lab Hub"
+    web/               React SPA dashboard
+    api/               Node.js backend
+  <next-project>/      ← future Multica projects go here
+    web/
+    api/
+```
 
 ## Quick start
 
@@ -19,17 +22,26 @@ Requirements: Node.js 20+, [pnpm](https://pnpm.io/) 9+
 
 ```bash
 pnpm install
-pnpm dev:web   # http://localhost:5173
-pnpm dev:api   # http://localhost:3001
+pnpm dev:jenan-lab-hub:web   # http://localhost:5173
+pnpm dev:jenan-lab-hub:api   # http://localhost:3001
+pnpm test
+pnpm build
 ```
 
 ## Multica
 
 - **Workspace:** `Jenan-agentic-lab`
-- **Project:** `Jenan Lab Hub` (one project → this repo)
 - **Repo:** `https://github.com/SaudAlsaeed/jenan-agentic-lab-projects`
+- **Convention:** each Multica project → `projects/<slug>/`
 
-When creating issues for this project, agents check out the whole repo and work in the relevant asset folder (`web/`, `api/`, …).
+When assigning issues, bind them to the matching Multica project. Agents check out this repo and work inside that project's folder.
+
+## Adding a new project
+
+1. Create the Multica project in the workspace (bind this same repo URL).
+2. Add `projects/<slug>/` with `web/`, `api/`, or other asset folders.
+3. Register packages in `pnpm-workspace.yaml` (already uses `projects/*/*`).
+4. Add convenience scripts to root `package.json` if helpful.
 
 ## Local path
 

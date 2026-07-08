@@ -2,10 +2,10 @@
   "name": "jenan-agentic-lab-projects",
   "private": true,
   "version": "0.1.0",
-  "description": "Jenan Lab Hub — project repo for the Jenan-agentic-lab Multica workspace",
+  "description": "Monorepo for all Jenan-agentic-lab Multica projects",
   "scripts": {
-    "dev:web": "pnpm --filter @jenan-agentic-lab/web dev",
-    "dev:api": "pnpm --filter @jenan-agentic-lab/api dev",
+    "dev:jenan-lab-hub:web": "pnpm --filter @jenan-lab-hub/web dev",
+    "dev:jenan-lab-hub:api": "pnpm --filter @jenan-lab-hub/api dev",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint"
