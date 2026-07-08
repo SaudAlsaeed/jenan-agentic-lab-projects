@@ -67,6 +67,13 @@ describe('Landing page', () => {
 
     expect(await screen.findByText(/تم استلام طلبك بنجاح/)).toBeInTheDocument();
     expect(submitInquiry).toHaveBeenCalledOnce();
+    expect(submitInquiry).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: 'سارة',
+        phone: '0501234567',
+        service: 'events',
+      }),
+    );
   });
 
   it('shows error banner when submit fails', async () => {
