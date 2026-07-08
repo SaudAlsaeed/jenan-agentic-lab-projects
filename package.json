@@ -6,6 +6,8 @@
   "scripts": {
     "dev:jenan-lab-hub:web": "pnpm --filter @jenan-lab-hub/web dev",
     "dev:jenan-lab-hub:api": "pnpm --filter @jenan-lab-hub/api dev",
+    "dev:welcome-app:web": "pnpm --filter @welcome-app/web dev",
+    "dev:welcome-app:api": "pnpm --filter @welcome-app/api dev",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint"

@@ -11,6 +11,9 @@ projects/
   jenan-lab-hub/       ← Multica project "Jenan Lab Hub"
     web/               React SPA dashboard
     api/               Node.js backend
+  welcome-app/         ← Multica project "Welcome app"
+    web/               React SPA (owner greeting + agent roster)
+    api/               Node.js backend (static content JSON)
   <next-project>/      ← future Multica projects go here
     web/
     api/
@@ -24,6 +27,8 @@ Requirements: Node.js 20+, [pnpm](https://pnpm.io/) 9+
 pnpm install
 pnpm dev:jenan-lab-hub:web   # http://localhost:5173
 pnpm dev:jenan-lab-hub:api   # http://localhost:3001
+pnpm dev:welcome-app:web     # http://localhost:5174
+pnpm dev:welcome-app:api     # http://localhost:3002
 pnpm test
 pnpm build
 ```
