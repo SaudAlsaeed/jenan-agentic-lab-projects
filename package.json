@@ -9,6 +9,7 @@
     "dev:photography-landing-page:web": "pnpm --filter @photography-landing-page/web dev",
     "dev:photography-landing-page:api": "pnpm --filter @photography-landing-page/api dev",
     "dev:welcome-agent-x:api": "pnpm --filter @welcome-agent-x/api dev",
+    "dev:welcome-agent-x:web": "pnpm --filter @welcome-agent-x/web dev",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint"

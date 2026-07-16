@@ -1,0 +1,37 @@
+:root {
+  --bg-mist-top: #c9d8e4;
+  --bg-mist-bottom: #f3f6f8;
+  --ink: #132033;
+  --ink-muted: #5a6b7a;
+  --line: rgba(19, 32, 51, 0.12);
+  --surface: #ffffff;
+  --accent: #c45c26;
+  --accent-hover: #a84b1c;
+  --signal: #1b6b7a;
+  --signal-idle: #8a9aa8;
+  --danger: #b42318;
+  --x-mark: rgba(19, 32, 51, 0.06);
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --max-content: 72rem;
+  --max-hero-text: 40rem;
+  --radius: 7px;
+  --pad-x: 1.25rem;
+  --pad-y-gallery: 4rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 2rem;
+    --pad-y-gallery: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --pad-y-gallery: 6rem;
+  }
+}
