@@ -6,6 +6,7 @@ Each subdirectory is one Multica project. Folder name should match the project s
 | --- | --- |
 | `jenan-lab-hub/` | Jenan Lab Hub |
 | `photography-landing-page/` | Photography Landing Page |
+| `welcome-agent-x/` | Welcome Agent X |
 
 To scaffold a new project:
 
